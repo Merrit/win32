@@ -3,6 +3,7 @@
 // Global resource identifiers, menus and accelerators
 
 import 'dart:ffi';
+import 'dart:typed_data';
 
 import 'package:ffi/ffi.dart';
 import 'package:win32/win32.dart';
@@ -227,6 +228,19 @@ class NotepadResources {
       ..cx = 166
       ..cy = 8;
     // ctext, "Original (c) Charles Petzold, 1998"
+
+    var dlg = aboutDialog.addressOf
+        .cast<Uint16>()
+        .asTypedList((sizeOf<DLGTEMPLATE>() / 2).ceil());
+
+    for (var i = 0; i < 5; i++) {
+      final control = aboutDialogControls[i]
+          .addressOf
+          .cast<Uint16>()
+          .asTypedList((sizeOf<DLGITEMTEMPLATE>() / 2).ceil());
+
+      dlg.addAll(control);
+    }
 
     final result = DialogBoxIndirectParam(
         hInstance, aboutDialog.addressOf, hwnd, nullptr, 0);

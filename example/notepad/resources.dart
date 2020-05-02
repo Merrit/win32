@@ -10,6 +10,7 @@ import 'package:win32/win32.dart';
 import 'notepad.dart';
 
 // Resource IDs
+const IDC_STATIC = -1;
 const IDC_FILENAME = 1000;
 const IDM_FILE_NEW = 40001;
 const IDM_FILE_OPEN = 40002;
@@ -173,6 +174,62 @@ class NotepadResources {
     if (result == NULL) {
       print('Error loading accelerators: ${GetLastError()}');
     }
+    return result;
+  }
+
+  static int LoadAboutDialog(int hwnd) {
+    final aboutDialog = DLGTEMPLATE.allocate()
+      ..style = DS_MODALFRAME | WS_POPUP
+      ..cdit = 5
+      ..x = 32
+      ..y = 32
+      ..cx = 180
+      ..cy = 100;
+
+    final aboutDialogControls = allocate<DLGITEMTEMPLATE>(count: 5);
+
+    aboutDialogControls[0]
+      ..style = IDOK
+      ..x = 66
+      ..y = 80
+      ..cx = 50
+      ..cy = 14;
+    // button, "OK"
+
+    aboutDialogControls[1]
+      ..style = IDC_STATIC
+      ..x = 7
+      ..y = 7
+      ..cx = 20
+      ..cy = 20;
+    // icon, "POPPAD"
+
+    aboutDialogControls[2]
+      ..style = IDC_STATIC
+      ..x = 40
+      ..y = 12
+      ..cx = 100
+      ..cy = 8;
+    // ctext, "DartNote" / APP_NAME
+
+    aboutDialogControls[3]
+      ..style = IDC_STATIC
+      ..x = 7
+      ..y = 40
+      ..cx = 166
+      ..cy = 8;
+    // ctext, "DartNote Editor for Windows"
+
+    aboutDialogControls[4]
+      ..style = IDC_STATIC
+      ..x = 7
+      ..y = 52
+      ..cx = 166
+      ..cy = 8;
+    // ctext, "Original (c) Charles Petzold, 1998"
+
+    final result = DialogBoxIndirectParam(
+        hInstance, aboutDialog.addressOf, hwnd, nullptr, 0);
     return result;
   }
 }

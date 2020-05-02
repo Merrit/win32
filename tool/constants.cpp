@@ -47,6 +47,7 @@ void main()
     printf("sizeof(CHOOSECOLORW) is %zu\n", sizeof(CHOOSECOLORW));
     printf("sizeof(MSG) is %zu\n", sizeof(MSG));
 
+    printf("sizeof(INT_PTR) is %zu\n", sizeof(INT_PTR));
     printf("sizeof(WCHAR) is %zu\n", sizeof(WCHAR));
     printf("sizeof(TCHAR) is %zu\n", sizeof(TCHAR));
     printf("sizeof(UINT) is %zu\n", sizeof(UINT));

@@ -472,6 +472,82 @@ class LOGFONT extends Struct {
     ..lfFaceName16 = 0;
 }
 
+// typedef struct {
+//   DWORD style;
+//   DWORD dwExtendedStyle;
+//   WORD  cdit;
+//   short x;
+//   short y;
+//   short cx;
+//   short cy;
+// } DLGTEMPLATE;
+class DLGTEMPLATE extends Struct {
+  @Int32()
+  int style;
+  @Int32()
+  int dwExtendedStyle;
+  @Int16()
+  int cdit;
+
+  @Int16()
+  int x;
+  @Int16()
+  int y;
+
+  @Int16()
+  int cx;
+  @Int16()
+  int cy;
+
+  factory DLGTEMPLATE.allocate() => allocate<DLGTEMPLATE>().ref
+    ..style = 0
+    ..dwExtendedStyle = 0
+    ..cdit = 0
+    ..x = 0
+    ..y = 0
+    ..cx = 0
+    ..cy = 0;
+}
+
+// typedef struct {
+//   DWORD style;
+//   DWORD dwExtendedStyle;
+//   short x;
+//   short y;
+//   short cx;
+//   short cy;
+//   WORD  id;
+// } DLGITEMTEMPLATE;
+class DLGITEMTEMPLATE extends Struct {
+  @Int32()
+  int style;
+
+  @Int32()
+  int dwExtendedStyle;
+
+  @Int16()
+  int x;
+  @Int16()
+  int y;
+
+  @Int16()
+  int cx;
+  @Int16()
+  int cy;
+
+  @Int16()
+  int id;
+
+  factory DLGITEMTEMPLATE.allocate() => allocate<DLGITEMTEMPLATE>().ref
+    ..style = 0
+    ..dwExtendedStyle = 0
+    ..x = 0
+    ..y = 0
+    ..cx = 0
+    ..cy = 0
+    ..id = 0;
+}
+
 // typedef struct tagCREATESTRUCTW {
 //   LPVOID    lpCreateParams;
 //   HINSTANCE hInstance;

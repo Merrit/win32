@@ -35,6 +35,9 @@ final DefWindowProc = user32
     .lookupFunction<defWindowProcNative, defWindowProcDart>('DefWindowProcW');
 final DestroyWindow = user32
     .lookupFunction<destroyWindowNative, destroyWindowDart>('DestroyWindow');
+final DialogBoxIndirectParam = user32.lookupFunction<
+    dialogBoxIndirectParamNative,
+    dialogBoxIndirectParamDart>('DialogBoxIndirectParamW');
 final DispatchMessage =
     user32.lookupFunction<dispatchMessageNative, dispatchMessageDart>(
         'DispatchMessageW');

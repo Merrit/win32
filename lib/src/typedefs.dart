@@ -159,6 +159,26 @@ typedef defWindowProcDart = int Function(
 typedef deleteObjectNative = Int32 Function(IntPtr ho);
 typedef deleteObjectDart = int Function(int ho);
 
+// INT_PTR DialogBoxIndirectParamW(
+//   HINSTANCE       hInstance,
+//   LPCDLGTEMPLATEW hDialogTemplate,
+//   HWND            hWndParent,
+//   DLGPROC         lpDialogFunc,
+//   LPARAM          dwInitParam
+// );
+typedef dialogBoxIndirectParamNative = IntPtr Function(
+    IntPtr hInstance,
+    Pointer<DLGTEMPLATE> hDialogTemplate,
+    IntPtr hWndParent,
+    Pointer<NativeFunction> lpDialogFunc,
+    IntPtr dwInitParam);
+typedef dialogBoxIndirectParamDart = int Function(
+    int hInstance,
+    Pointer<DLGTEMPLATE> hDialogTemplate,
+    int hWndParent,
+    Pointer<NativeFunction> lpDialogFunc,
+    int dwInitParam);
+
 // BOOL DestroyWindow(
 //   HWND hWnd
 // );

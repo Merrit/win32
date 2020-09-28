@@ -402,6 +402,41 @@ final FindNextVolume = _kernel32.lookupFunction<
     int Function(int hFindVolume, Pointer<Utf16> lpszVolumeName,
         int cchBufferLength)>('FindNextVolumeW');
 
+/// Determines the location of a resource with the specified type and name
+/// in the specified module.
+///
+/// ```c
+/// HRSRC FindResourceW(
+///   HMODULE hModule,
+///   LPCWSTR  lpName,
+///   LPCWSTR  lpType
+/// );
+/// ```
+/// {@category kernel32}
+final FindResource = _kernel32.lookupFunction<
+    IntPtr Function(
+        IntPtr hModule, Pointer<Utf16> lpName, Pointer<Utf16> lpType),
+    int Function(int hModule, Pointer<Utf16> lpName,
+        Pointer<Utf16> lpType)>('FindResourceW');
+
+/// Determines the location of the resource with the specified type, name,
+/// and language in the specified module.
+///
+/// ```c
+/// HRSRC FindResourceExW(
+///   HMODULE hModule,
+///   LPCWSTR  lpType,
+///   LPCWSTR  lpName,
+///   WORD    wLanguage
+/// ););
+/// ```
+/// {@category kernel32}
+final FindResourceEx = _kernel32.lookupFunction<
+    IntPtr Function(IntPtr hModule, Pointer<Utf16> lpName,
+        Pointer<Utf16> lpType, Int16 wLanguage),
+    int Function(int hModule, Pointer<Utf16> lpName, Pointer<Utf16> lpType,
+        int wLanguage)>('FindResourceExW');
+
 /// Closes the specified volume search handle. The FindFirstVolume and
 /// FindNextVolume functions use this search handle to locate volumes.
 ///
@@ -906,6 +941,31 @@ final IsDebuggerPresent = _kernel32
 final LoadLibrary = _kernel32.lookupFunction<
     IntPtr Function(Pointer<Utf16> lpLibFileName),
     int Function(Pointer<Utf16> lpLibFileName)>('LoadLibraryW');
+
+/// Retrieves a handle that can be used to obtain a pointer to the first
+/// byte of the specified resource in memory.
+///
+/// ```c
+/// HGLOBAL LoadResource(
+///   HMODULE hModule,
+///   HRSRC   hResInfo
+/// );
+/// ```
+/// {@category kernel32}
+final LoadResource = _kernel32.lookupFunction<
+    IntPtr Function(IntPtr hModule, IntPtr hResInfo),
+    int Function(int hModule, int hResInfo)>('LoadResource');
+
+/// Retrieves a pointer to the specified resource in memory.
+///
+/// ```c
+/// LPVOID LockResource(
+///   HGLOBAL hResData
+/// );
+/// ```
+/// {@category kernel32}
+final LockResource = _kernel32.lookupFunction<Pointer Function(IntPtr hResData),
+    Pointer Function(int hResData)>('LockResource');
 
 /// Opens an existing local process object.
 ///

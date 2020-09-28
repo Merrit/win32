@@ -95,6 +95,14 @@ void main() {
       final function = FindNextVolume;
       expect(function, isA<Function>());
     });
+    test('Can instantiate FindResource', () {
+      final function = FindResource;
+      expect(function, isA<Function>());
+    });
+    test('Can instantiate FindResourceEx', () {
+      final function = FindResourceEx;
+      expect(function, isA<Function>());
+    });
     test('Can instantiate FindVolumeClose', () {
       final function = FindVolumeClose;
       expect(function, isA<Function>());
@@ -225,6 +233,14 @@ void main() {
     });
     test('Can instantiate LoadLibrary', () {
       final function = LoadLibrary;
+      expect(function, isA<Function>());
+    });
+    test('Can instantiate LoadResource', () {
+      final function = LoadResource;
+      expect(function, isA<Function>());
+    });
+    test('Can instantiate LockResource', () {
+      final function = LockResource;
       expect(function, isA<Function>());
     });
     test('Can instantiate OpenProcess', () {
